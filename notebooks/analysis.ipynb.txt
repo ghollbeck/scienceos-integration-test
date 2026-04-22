@@ -1,0 +1,31 @@
+Analysis notebook (saved as .txt to avoid binary diffs in ScienceOS tests)
+
+Cell 1 — Load results
+---------------------
+import pandas as pd
+import matplotlib.pyplot as plt
+
+df = pd.read_csv("../runs/results.csv")
+print(df.head())
+
+
+Cell 2 — Plot learning curves
+------------------------------
+fig, ax = plt.subplots(figsize=(8, 4))
+for env_name, group in df.groupby("env"):
+    ax.plot(group["step"], group["mean_reward"], label=env_name)
+ax.set_xlabel("Training steps")
+ax.set_ylabel("Mean reward")
+ax.legend()
+plt.tight_layout()
+plt.savefig("learning_curves.png", dpi=150)
+
+
+Cell 3 — Summary statistics
+-----------------------------
+summary = df.groupby(["env", "agents"]).agg(
+    mean=("mean_reward", "mean"),
+    std=("std_reward", "mean"),
+    convergence=("convergence_step", "mean")
+).round(3)
+print(summary)

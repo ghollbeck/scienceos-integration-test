@@ -1,0 +1,18 @@
+env:
+  name: CoopNav
+  num_agents: 2
+  grid_size: 10
+  max_episode_steps: 200
+
+training:
+  total_steps: 1_000_000
+  lr: 3.0e-4
+  gamma: 0.99
+  clip_ratio: 0.2
+  batch_size: 2048
+  epochs_per_update: 10
+
+logging:
+  log_interval: 10000
+  save_interval: 100000
+  output_dir: ./runs

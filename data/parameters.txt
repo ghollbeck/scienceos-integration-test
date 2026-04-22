@@ -1,0 +1,15 @@
+Experiment configuration — generated 2026-04-21
+===============================================
+
+Environment seeds: 0, 1, 2, 3, 4
+Agent counts tested: 2, 4, 8
+Training steps per run: 1,000,000
+Evaluation episodes: 200
+Hardware: 4x A100 80GB
+Framework: PyTorch 2.2 + RLlib 2.4
+
+Notes:
+- All runs use identical random seeds for environment init
+- Reward normalisation: per-episode mean subtraction
+- Observation space: 8-dim continuous (position, velocity, goal delta)
+- Action space: 2-dim continuous (dx, dy) clipped to [-1, 1]

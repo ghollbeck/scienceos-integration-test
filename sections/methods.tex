@@ -1,0 +1,38 @@
+\section{Methods}
+\label{sec:methods}
+
+\subsection{Environment}
+
+We implement three gridworld environments of increasing complexity:
+\begin{itemize}
+  \item \textbf{CoopNav-2}: Two agents navigate to shared goal positions.
+  \item \textbf{CoopNav-4}: Four agents with overlapping observation spaces.
+  \item \textbf{ResourceAlloc}: Agents must divide limited resources optimally.
+\end{itemize}
+
+\subsection{Training}
+
+All agents use Proximal Policy Optimisation (PPO) with shared parameters.
+Hyperparameters are listed in Table~\ref{tab:hyperparams}.
+
+\begin{table}[h]
+\centering
+\begin{tabular}{ll}
+\hline
+\textbf{Parameter} & \textbf{Value} \\
+\hline
+Learning rate      & $3 \times 10^{-4}$ \\
+Discount ($\gamma$)& 0.99 \\
+Clip ratio         & 0.2 \\
+Batch size         & 2048 \\
+Epochs per update  & 10 \\
+\hline
+\end{tabular}
+\caption{PPO hyperparameters used across all experiments.}
+\label{tab:hyperparams}
+\end{table}
+
+\subsection{Evaluation}
+
+We evaluate each configuration over 5 independent seeds and report mean $\pm$ std.
+See \texttt{data/results.csv} for raw numbers.
